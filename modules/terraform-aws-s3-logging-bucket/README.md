@@ -1,6 +1,6 @@
 # AWS S3 logging bucket module
 
-![Storage_AmazonS3.png][logo]
+![Storage_AmazonS3.png][Amazon S3 icon]
 
 Terraform submodule that creates a project-level Amazon S3 bucket for logging
 actions performed on the storage bucket configured by the [root module].
@@ -244,4 +244,4 @@ MIT License. See [LICENSE](LICENSE) for full details.
 
 [AWS Command Line Interface (CLI)]: https://aws.amazon.com/cli/
 [root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
-[logo]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/images/Storage_AmazonS3.png "Storage_AmazonS3.png"
+[Amazon S3 icon]: https://raw.githubusercontent.com/sciomedes/terraform-s3-lambda-apigateway-example/master/images/Storage_AmazonS3.png "Storage_AmazonS3.png"
