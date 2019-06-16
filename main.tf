@@ -42,6 +42,9 @@ locals {
     Region         = "${local.region}"
   }
 
+  # account info used to permission storage bucket
+  account_number = "999999999999"
+  iam_user       = "user"
 }
 
 #========================================================================
