@@ -87,9 +87,7 @@ aws s3api get-public-access-block --bucket <bucket-name>
 ```
 
 #### Amazon's S3 log delivery group gets needed permissions
-The log deliver group is given the needed permissions using the standard
-[canned ACL](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl)
-`log-delivery-write`.
+The log deliver group is given the needed permissions using the standard [canned ACL] `log-delivery-write`.
 ```
 aws s3api get-bucket-acl --bucket <bucket-name>
 {
@@ -149,7 +147,7 @@ aws s3api get-bucket-versioning --bucket <bucket-name>
 ```
 
 #### lifecycle rules are implemented
-Log files will transitioned between [Amazon S3 storage classes](https://aws.amazon.com/s3/storage-classes/) 
+Log files will transitioned between [Amazon S3 storage classes]
   according specified lifecycle rules.  The defaults are listed in this table:
 
 |  Cumulative age    | Storage class  |
@@ -253,13 +251,17 @@ and for interacting with any objects within a bucket.
 
 ## Authors
 
-Module managed by [sciomedes](https://github.com/sciomedes).
+Module managed by [sciomedes].
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for full details.
+MIT License. See [LICENSE] for full details.
 
 
+[Amazon S3 icon]: https://raw.githubusercontent.com/sciomedes/terraform-s3-lambda-apigateway-example/master/images/Storage_AmazonS3.[root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
 [AWS Command Line Interface (CLI)]: https://aws.amazon.com/cli/
-[root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
-[Amazon S3 icon]: https://raw.githubusercontent.com/sciomedes/terraform-s3-lambda-apigateway-example/master/images/Storage_AmazonS3.png "Storage_AmazonS3.png"
+[canned ACL]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
+[Amazon S3 storage classes]: https://aws.amazon.com/s3/storage-classes/
+png "Storage_AmazonS3.png"
+[sciomedes]: https://github.com/sciomedes
+[LICENSE]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/blob/master/modules/terraform-aws-s3-logging-bucket/LICENSE
