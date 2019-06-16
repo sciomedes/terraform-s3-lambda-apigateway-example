@@ -208,6 +208,7 @@ aws s3api get-bucket-lifecycle-configuration --bucket <bucket-name>
 ```
 
 #### custom tags can be set
+
 ```
 aws s3api get-bucket-tagging --bucket <bucket-name>
 {
@@ -232,6 +233,23 @@ aws s3api get-bucket-tagging --bucket <bucket-name>
 }
 ```
 
+## IAM permissions
+We're using an S3 full-access set of permissions, though this is probably not minimal.
+Many s3 permissions are needed for the terraform interactions required for bucket creation and deletion as well as
+and for interacting with any objects within a bucket.
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "S3FullAccess",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::*"
+        }
+    ]
+}
+```
 
 ## Authors
 
