@@ -34,6 +34,17 @@ locals {
     Region         = "${local.region}"
   }
 
+  # storage bucket variables
+  storage_bucket_name = "sciomedes-storage-1ecf263bd0dd5836"
+
+  # iam role variables
+  role_name = "lambda_role_name"
+  iam_role_tags = {
+    Subject        = "sciomedes"
+    OrchestratedBy = "Terraform"
+    Function       = "iam-role"
+    Region         = "${local.region}"
+  }
 }
 
 
