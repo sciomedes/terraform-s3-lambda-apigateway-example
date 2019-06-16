@@ -258,7 +258,8 @@ Module managed by [sciomedes].
 MIT License. See [LICENSE] for full details.
 
 
-[Amazon S3 icon]: https://raw.githubusercontent.com/sciomedes/terraform-s3-lambda-apigateway-example/master/images/Storage_AmazonS3.[root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
+[Amazon S3 icon]: https://raw.githubusercontent.com/sciomedes/terraform-s3-lambda-apigateway-example/master/images/Storage_AmazonS3
+[root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
 [AWS Command Line Interface (CLI)]: https://aws.amazon.com/cli/
 [canned ACL]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
 [Amazon S3 storage classes]: https://aws.amazon.com/s3/storage-classes/
