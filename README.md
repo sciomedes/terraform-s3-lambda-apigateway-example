@@ -83,4 +83,26 @@ module "s3-logging-bucket" {
   lifecycle_3X = "${local.logging_lifecycle_3X}"
 
 }
+
+#========================================================================
+# role for lambda functions:
+#========================================================================
+module "iam-role-lambda" {
+
+  source = "./modules/terraform-aws-iam-lambda-role"
+
+  #------------------------------------------------------------------------
+  # the following settings are bucket-specific
+  #------------------------------------------------------------------------
+  region         = "${local.region}"
+  bucket_name    = "${local.storage_bucket_name}"
+
+  role_name      = "${local.role_name}"
+
+  #------------------------------------------------------------------------
+  # tag resource:
+  #------------------------------------------------------------------------
+  tags = "${local.iam_role_tags}"
+
+}
 ```
