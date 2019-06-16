@@ -22,6 +22,18 @@ locals {
     Region         = "${local.region}"
   }
 
+  # storage bucket variables
+  storage_bucket_name = "sciomedes-storage-1ecf263bd0dd5836"
+
+  # iam role variables
+  role_name = "lambda_role_name"
+  iam_role_tags = {
+    Subject        = "sciomedes"
+    OrchestratedBy = "Terraform"
+    Function       = "iam-role"
+    Region         = "${local.region}"
+  }
+
 }
 
 #========================================================================
@@ -57,5 +69,27 @@ module "s3-logging-bucket" {
   # expire after this many days:
   # this number MUST be greater than lifecycle_23
   lifecycle_3X = "${local.logging_lifecycle_3X}"
+
+}
+
+#========================================================================
+# role for lambda functions:
+#========================================================================
+module "iam-role-lambda" {
+
+  source = "./modules/terraform-aws-iam-lambda-role"
+
+  #------------------------------------------------------------------------
+  # the following settings are bucket-specific
+  #------------------------------------------------------------------------
+  region         = "${local.region}"
+  bucket_name    = "${local.storage_bucket_name}"
+
+  role_name      = "${local.role_name}"
+
+  #------------------------------------------------------------------------
+  # tag resource:
+  #------------------------------------------------------------------------
+  tags = "${local.iam_role_tags}"
 
 }
