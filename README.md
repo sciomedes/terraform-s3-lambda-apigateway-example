@@ -17,7 +17,7 @@ locals {
   force_destroy = true
   
   # logging bucket variables
-  logging_bucket_name = "sciomedes-logging-bucket-1ecf263bd0dd5836
+  logging_bucket_name = "sciomedes-logging-bucket-1ecf263bd0dd5836"
   logging_lifecycle_12 = 30   // 1 month
   logging_lifecycle_23 = 90   // 3 months
   logging_lifecycle_3X = 3650 // 10 years
