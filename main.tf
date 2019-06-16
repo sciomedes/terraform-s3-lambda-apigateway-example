@@ -104,3 +104,42 @@ module "iam-role-lambda" {
   tags = "${local.iam_role_tags}"
 
 }
+
+#========================================================================
+# s3 bucket for storing data:
+#========================================================================
+module "s3-storage-bucket" {
+
+  source = "./modules/terraform-aws-s3-storage-bucket"
+
+  #------------------------------------------------------------------------
+  # account specific information:
+  #------------------------------------------------------------------------
+  account_number = "${local.account_number}"
+  iam_user       = "${local.iam_user}"
+  role_name      = "${local.role_name}"
+
+  #------------------------------------------------------------------------
+  # the following settings are bucket-specific
+  #------------------------------------------------------------------------
+  region              = "${local.region}"
+  bucket_name         = "${local.storage_bucket_name}"
+  force_destroy       = "${local.force_destroy}"
+
+  #------------------------------------------------------------------------
+  # tag resource:
+  #------------------------------------------------------------------------
+  tags = "${local.storage_bucket_tags}"
+
+  #------------------------------------------------------------------------
+  # lifecycle timescales:
+  #------------------------------------------------------------------------
+  # number of days before transition from S3 Standard to S3 Standard-IA
+  # this number MUST be at least 30
+  lifecycle_12 = "${local.storage_lifecycle_12}"
+
+  # number of days before transition from S3 Standard-IA to S3 Glacier
+  # this number MUST be at least 30 more than lifecycle_12
+  lifecycle_23 = "${local.storage_lifecycle_23}"
+
+}
