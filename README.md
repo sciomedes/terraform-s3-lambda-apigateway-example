@@ -6,6 +6,11 @@
 |-------------------------------------------------|-------------------------------------------|
 | `terraform-aws-s3-logging-bucket`               | deploy a bucket dedicated to logging      |
 
+## Serverless backend
+
+| module                                          | function                                  |
+|-------------------------------------------------|-------------------------------------------|
+| `terraform-aws-iam-lambda-role`                 | create Lambda role for S3 bucket access   |
 
 ## Usage
 
