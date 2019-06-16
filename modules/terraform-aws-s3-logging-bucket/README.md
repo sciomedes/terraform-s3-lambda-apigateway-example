@@ -148,13 +148,14 @@ aws s3api get-bucket-versioning --bucket <bucket-name>
 
 #### lifecycle rules are implemented
 Log files will transitioned between [Amazon S3 storage classes]
-  according specified lifecycle rules.  The defaults are listed in this table:
-
-|  Cumulative age    | Storage class  |
-| ----------------- :|:-------------- |
-|       t < 30 days  | S3 Standard    |
-| 30 <= t < 90 days  | S3 Standard-IA |
-|      90 days <= t  | S3 Glacier     |
+according to specified lifecycle rules.  The transitions suggested
+by the above example settings are shown in this table:
+|  Cumulative age      | Storage class  |
+| ------------------- :|:-------------- |
+|       t < 30 days    | S3 Standard    |
+| 30 <= t < 90 days    | S3 Standard-IA |
+| 90 <= t < 3650 days  | S3 Glacier     |
+|      3650 days <= t  | Expired        |
 
 After creation, the lifecycle state can be checked using the CLI;
 ```
