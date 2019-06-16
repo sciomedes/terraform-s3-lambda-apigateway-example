@@ -22,17 +22,12 @@ variable "storage_lifecycle_tags" {
 
 variable "lifecycle_12" {
   description = "Age of object in days at which transition from S3 Standard to S3 Standard-IA should occur"
-  type        = "number"
+  type        = number
 }
 
 variable "lifecycle_23" {
   description = "Age of object in days at which transition from S3 Standard-IA to S3 Glacier should occur"
-  type        = "number"
-}
-
-variable "lifecycle_3X" {
-  description = "Age of object in days at which it should expire"
-  type        = "number"
+  type        = number
 }
 
 variable "account_number" {
