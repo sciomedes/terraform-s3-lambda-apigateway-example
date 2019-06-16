@@ -9,6 +9,7 @@ actions performed on the storage bucket configured by the [root module].
 
 ```
 module "s3_logging_bucket" {
+
   source = "git::https://github.com/sciomedes/terraform-aws-s3-logging-bucket.git"
 
   #------------------------------------------------------------------------
