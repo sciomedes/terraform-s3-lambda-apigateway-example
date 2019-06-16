@@ -24,6 +24,14 @@ locals {
 
   # storage bucket variables
   storage_bucket_name = "sciomedes-storage-1ecf263bd0dd5836"
+  storage_lifecycle_12 = 185  // 0.5 year
+  storage_lifecycle_23 = 1095 // 3 years
+  storage_bucket_tags = {
+    Subject        = "sciomedes"
+    OrchestratedBy = "Terraform"
+    Function       = "data-storage"
+    Region         = "${local.region}"
+  }
 
   # iam role variables
   role_name = "lambda_role_name"
