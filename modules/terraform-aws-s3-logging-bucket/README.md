@@ -265,6 +265,6 @@ MIT License. See [LICENSE] for full details.
 [root module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example
 [AWS Command Line Interface (CLI)]: https://aws.amazon.com/cli/
 [canned ACL]: https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
-[Amazon S3 storage classes]: https://aws.amazon.com/s3/storage-classes/png
+[Amazon S3 storage classes]: https://aws.amazon.com/s3/storage-classes/
 [sciomedes]: https://github.com/sciomedes
 [LICENSE]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/blob/master/modules/terraform-aws-s3-logging-bucket/LICENSE
