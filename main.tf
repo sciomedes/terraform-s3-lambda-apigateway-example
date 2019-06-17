@@ -165,8 +165,8 @@ module "cloudtrail-s3-bucket-logging" {
   #------------------------------------------------------------------------
   region              = "${local.region}"
   trail_name          = "${local.trail_name}"
-  storage_bucket_name = "${local.storage_bucket_name}"
   logging_bucket_name = "${local.logging_bucket_name}"
+  storage_bucket_arn  = "${module.s3-storage-bucket.storage_bucket_arn}"
 
   #------------------------------------------------------------------------
   # tag resource:
