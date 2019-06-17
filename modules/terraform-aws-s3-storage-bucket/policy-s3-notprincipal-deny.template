@@ -1,0 +1,22 @@
+{
+  "Id": "Policy1556373503472",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "S3BucketFullAccessUserOnly",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": [
+          "arn:aws:s3:::${bucket_name}",
+          "arn:aws:s3:::${bucket_name}/*"
+      ],
+      "Principal": {
+        "AWS": [
+          "arn:aws:iam::${account_number}:root",
+          "arn:aws:iam::${account_number}:user/${iam_user}",
+          "arn:aws:iam::${account_number}:role/${role_name}"
+        ]
+      }
+    }
+  ]
+}
