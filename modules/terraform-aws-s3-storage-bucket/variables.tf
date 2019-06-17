@@ -1,6 +1,6 @@
 variable "region" {
   description = "Name of region containing bucket"
-  default     = "us-east-1"
+  type        = "string"
 }
 
 variable "bucket_name" {
