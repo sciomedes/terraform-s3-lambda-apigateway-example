@@ -6,6 +6,7 @@
 |-------------------------------------------------|-------------------------------------------|
 | `terraform-aws-s3-logging-bucket`               | deploy a bucket dedicated to logging      |
 | `terraform-aws-s3-storage-bucket`               | create Amazon S3 storage bucket           |
+| `terraform-aws-s3-cloudtrail-s3-bucket-logging` | create AWS CloudTrail trail for logging   |
 
 ## Serverless backend
 
