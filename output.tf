@@ -12,3 +12,8 @@ output "storage_bucket_arn" {
   description = "The ARN of the S3 storage bucket"
   value = "${module.s3-storage-bucket.storage_bucket_arn}"
 }
+
+output "cloudtrail_trail_arn" {
+  description = "ARN for CloudTrail trail"
+  value = "${module.cloudtrail-s3-bucket-logging.cloudtrail_trail_arn}"
+}
