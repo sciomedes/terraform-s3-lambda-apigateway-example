@@ -49,7 +49,9 @@ module "s3-storage-bucket" {
 ```
 
 ## Description
-This module creates a new S3 bucket with the following settings:
+The S3 storage bucket settings are described next.
+These settings can be checked using the [AWS Command Line Interface (CLI)].
+
 
 #### public access is blocked
 
@@ -137,7 +139,6 @@ by the above example settings are shown in this table:
 | 30 <= t < 365 days  | S3 Standard-IA |
 |      365 days <= t  | S3 Glacier     |
 
-After creation, the lifecycle state can be checked using the CLI;
 ```bash
 aws s3api get-bucket-lifecycle-configuration --bucket <bucket-name>
 ```
