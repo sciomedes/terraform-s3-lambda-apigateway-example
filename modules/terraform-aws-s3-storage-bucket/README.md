@@ -134,7 +134,7 @@ according to specified lifecycle rules.  The transitions suggested
 by the above example settings are shown in this table:
 
 |  Cumulative age     | Storage class  |
-| ------------------ :|:-------------- |
+|--------------------:|:---------------|
 |       t < 30 days   | S3 Standard    |
 | 30 <= t < 365 days  | S3 Standard-IA |
 |      365 days <= t  | S3 Glacier     |
