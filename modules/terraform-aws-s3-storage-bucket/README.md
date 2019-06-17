@@ -11,7 +11,7 @@ Access to the bucket is restricted to the bucket owner and a specific defined ro
 ```
 module "s3-storage-bucket" {
 
-  source = "git::https://github.com/sciomedes/terraform-aws-s3-storage-bucket.git"
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-s3-storage-bucket"
 
   #------------------------------------------------------------------------
   # account specific information:

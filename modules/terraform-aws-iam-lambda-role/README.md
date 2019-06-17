@@ -10,9 +10,9 @@ actions performed on the storage bucket configured by the [root module].
 ```
 module "iam-role-lambda" {
 
-  source = "git::https://github.com/sciomedes/terraform-aws-iam-lambda-role.git"
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-iam-lambda-role"
 
-  #------------------------------------------------------------------------
+#------------------------------------------------------------------------
   # bucket details:
   #------------------------------------------------------------------------
   region         = "us-east-2"
