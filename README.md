@@ -67,7 +67,7 @@ locals {
 #========================================================================
 module "s3-logging-bucket" {
 
-  source = "https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/tree/master/modules/terraform-aws-s3-logging-bucket"
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-s3-logging-bucket"
 
   #------------------------------------------------------------------------
   # the following settings are region-specific
@@ -103,7 +103,7 @@ module "s3-logging-bucket" {
 #========================================================================
 module "iam-role-lambda" {
 
-  source = "./modules/terraform-aws-iam-lambda-role"
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-iam-lambda-role"
 
   #------------------------------------------------------------------------
   # the following settings are bucket-specific
@@ -124,7 +124,8 @@ module "iam-role-lambda" {
 # s3 bucket for storing data:
 #========================================================================
 module "s3-storage-bucket" {
-  source = "./modules/terraform-aws-s3-storage-bucket"
+
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-s3-storage-bucket"
 
   #------------------------------------------------------------------------
   # account specific information:
