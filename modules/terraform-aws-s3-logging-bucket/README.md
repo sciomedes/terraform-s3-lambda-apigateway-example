@@ -75,8 +75,10 @@ the fulfillment of the desired setting.
 
 #### public access is blocked
 
-```
+```bash
 aws s3api get-public-access-block --bucket <bucket-name>
+```
+```json
 {
     "PublicAccessBlockConfiguration": {
         "BlockPublicAcls": true,
@@ -89,8 +91,10 @@ aws s3api get-public-access-block --bucket <bucket-name>
 
 #### Amazon's S3 log delivery group gets needed permissions
 The log deliver group is given the needed permissions using the standard [canned ACL] `log-delivery-write`.
-```
+```bash
 aws s3api get-bucket-acl --bucket <bucket-name>
+```
+```json
 {
     "Owner": {
         "ID": "ffc5189fc8e0d3a787150f5107cbad4b18351aff0654a2c2e2f992f930943a2f"
@@ -125,6 +129,8 @@ aws s3api get-bucket-acl --bucket <bucket-name>
 #### encryption at rest with server-side Amazon managed keys (SSE-S3)
 ```bash
 aws s3api get-bucket-encryption --bucket <bucket-name>
+```
+```json
 {
     "ServerSideEncryptionConfiguration": {
         "Rules": [
@@ -139,8 +145,10 @@ aws s3api get-bucket-encryption --bucket <bucket-name>
 ```
 
 #### versioning is not enabled
-```
+```bash
 aws s3api get-bucket-versioning --bucket <bucket-name>
+```
+```json
 {
     "Status": "Suspended",
     "MFADelete": "Disabled"
@@ -160,8 +168,10 @@ by the above example settings are shown in this table:
 |      3650 days <= t  | Expired        |
 
 After creation, the lifecycle state can be checked using the CLI;
-```
+```bash
 aws s3api get-bucket-lifecycle-configuration --bucket <bucket-name>
+```
+```json
 {
     "Rules": [
         {
@@ -210,8 +220,10 @@ aws s3api get-bucket-lifecycle-configuration --bucket <bucket-name>
 
 #### custom tags can be set
 
-```
+```bash
 aws s3api get-bucket-tagging --bucket <bucket-name>
+```
+```json
 {
     "TagSet": [
         {
@@ -238,7 +250,7 @@ aws s3api get-bucket-tagging --bucket <bucket-name>
 We're using an S3 full-access set of permissions, though this is probably not minimal.
 Many s3 permissions are needed for the terraform interactions required for bucket creation and deletion as well as
 and for interacting with any objects within a bucket.
-```
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
