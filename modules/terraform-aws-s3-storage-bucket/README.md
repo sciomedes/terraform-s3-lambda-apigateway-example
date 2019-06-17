@@ -186,8 +186,7 @@ aws s3api get-bucket-tagging --bucket <bucket-name>
 ```
 
 ## IAM permissions
-We're using the same S3 full-access set of permissions used in the [terraform-aws-s3-logging-bucket module];
-see the [README file] found there.
+We're using the same S3 full-access set of permissions described and used in the [terraform-aws-s3-logging-bucket module].
 
 ## Authors
 
@@ -203,6 +202,5 @@ MIT License. See [LICENSE](LICENSE) for full details.
 [AWS Command Line Interface (CLI)]: https://aws.amazon.com/cli/
 [Amazon S3 storage classes]: https://aws.amazon.com/s3/storage-classes/
 [terraform-aws-s3-logging-bucket module]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/tree/master/modules/terraform-aws-s3-logging-bucket
-[README file]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/blob/master/modules/terraform-aws-s3-logging-bucket/README.md
 [sciomedes]: https://github.com/sciomedes
 [LICENSE]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/blob/master/modules/terraform-aws-s3-logging-bucket/LICENSE
