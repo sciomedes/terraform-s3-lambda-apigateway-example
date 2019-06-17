@@ -151,6 +151,7 @@ aws s3api get-bucket-versioning --bucket <bucket-name>
 Log files will transitioned between [Amazon S3 storage classes]
 according to specified lifecycle rules.  The transitions suggested
 by the above example settings are shown in this table:
+
 |  Cumulative age      | Storage class  |
 | ------------------- :|:-------------- |
 |       t < 30 days    | S3 Standard    |
