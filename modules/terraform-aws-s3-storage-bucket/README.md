@@ -48,6 +48,27 @@ module "s3-storage-bucket" {
 }
 ```
 
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|:----:|:-----:|:-----:|
+| account\_number | AWS account number used in ARNs | string | n/a | yes |
+| bucket\_name | Name of bucket to manage | string | n/a | yes |
+| force\_destroy | Should non-empty bucket be removed upon performing 'terraform destroy' | string | `"false"` | no |
+| iam\_user | AWS IAM user who owns bucket | string | n/a | yes |
+| lifecycle\_12 | Age of object in days at which transition from S3 Standard to S3 Standard-IA should occur | number | n/a | yes |
+| lifecycle\_23 | Age of object in days at which transition from S3 Standard-IA to S3 Glacier should occur | number | n/a | yes |
+| region | Name of region containing bucket | string | n/a | yes |
+| role\_name | Name of lambda role used to access bucket | string | n/a | yes |
+| storage\_lifecycle\_tags | A mapping of tags to assign to the set of lifecycle rules. | map | `<map>` | no |
+| tags | A mapping of tags to assign to the bucket. | map | `<map>` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| storage\_bucket\_arn | ARN for storage bucket |
+
 ## Description
 The S3 storage bucket settings are described next.
 These settings can be checked using the [AWS Command Line Interface (CLI)].
