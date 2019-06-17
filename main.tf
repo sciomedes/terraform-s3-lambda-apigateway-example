@@ -42,6 +42,15 @@ locals {
     Region         = "${local.region}"
   }
 
+  # cloudtrail specs
+  trail_name = "sciomedes-1ecf263bd0dd5836"
+  cloudtrail_tags = {
+    Subject        = "sciomedes"
+    OrchestratedBy = "Terraform"
+    Function       = "cloudtrail"
+    Region         = "${local.region}"
+  }
+
   # account info used to permission storage bucket
   account_number = "999999999999"
   iam_user       = "user"
@@ -141,5 +150,27 @@ module "s3-storage-bucket" {
   # number of days before transition from S3 Standard-IA to S3 Glacier
   # this number MUST be at least 30 more than lifecycle_12
   lifecycle_23 = "${local.storage_lifecycle_23}"
+
+}
+
+#========================================================================
+# s3 bucket for catching logs:
+#========================================================================
+module "cloudtrail-s3-bucket-logging" {
+
+  source = "./modules/terraform-aws-cloudtrail-s3-bucket-logging"
+
+  #------------------------------------------------------------------------
+  # the following settings are region-specific
+  #------------------------------------------------------------------------
+  region              = "${local.region}"
+  trail_name          = "${local.trail_name}"
+  storage_bucket_name = "${local.storage_bucket_name}"
+  logging_bucket_name = "${local.logging_bucket_name}"
+
+  #------------------------------------------------------------------------
+  # tag resource:
+  #------------------------------------------------------------------------
+  tags = "${local.cloudtrail_tags}"
 
 }
