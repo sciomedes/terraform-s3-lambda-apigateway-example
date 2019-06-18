@@ -15,6 +15,18 @@
 | `terraform-aws-iam-lambda-role`                 | create Lambda role for S3 bucket access   |
 
 ## Usage
+Replace the variable values in the `locals` block with values that make sense to your own deployment.
+One way to have terraform perform the deployment is with this sequence of commands:
+```bash
+terraform init
+terraform plan -out tf.plan
+terraform apply tf.plan
+```
+
+#### errors due to eventual consistency issues
+Due to 'eventual consistency' issues, one may require cycling through several `plan` and `apply` commands
+before the entire deployment will complete.  Example errors that may occur in such cases include
+`InsufficientS3BucketPolicyException` and `Error putting S3 policy: OperationAborted`.
 
 ```
 locals {
