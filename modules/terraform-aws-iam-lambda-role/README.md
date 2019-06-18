@@ -12,7 +12,7 @@ module "iam-role-lambda" {
 
   source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-iam-lambda-role"
 
-#------------------------------------------------------------------------
+  #------------------------------------------------------------------------
   # bucket details:
   #------------------------------------------------------------------------
   region         = "us-east-2"
