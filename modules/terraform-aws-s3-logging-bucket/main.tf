@@ -21,6 +21,7 @@ resource "aws_s3_bucket" "logging_bucket" {
   region = "${var.region}"
   bucket = "${var.logging_bucket_name}"
   acl    = "log-delivery-write"      # canned ACL
+  force_destroy = "${var.force_destroy}"
 
   # enable default AWS SSE:
   server_side_encryption_configuration {
