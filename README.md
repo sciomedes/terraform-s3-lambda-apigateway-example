@@ -40,9 +40,6 @@ before the entire deployment will complete.  Example errors that may occur in su
 locals {
   region = "us-east-2"
 
-  // should non-empty buckets be removed upon 'terraform destroy'
-  force_destroy = true
-  
   # logging bucket variables
   logging_bucket_name = "sciomedes-logging-bucket-1ecf263bd0dd5836"
   logging_lifecycle_12 = 30   // 1 month
@@ -71,6 +68,11 @@ locals {
     Function       = "data-storage"
     Region         = "${local.region}"
   }
+
+  // should non-empty buckets be removed upon 'terraform destroy'
+  // this is useful during development and testing
+  logging_force_destroy = true
+  storage_force_destroy = true
 
   # iam role variables
   role_name = "lambda_role_name"
@@ -109,6 +111,7 @@ module "s3-logging-bucket" {
   #------------------------------------------------------------------------
   region              = "${local.region}"
   logging_bucket_name = "${local.logging_bucket_name}"
+  force_destroy       = "${local.logging_force_destroy}"
 
   #------------------------------------------------------------------------
   # tag resource:
