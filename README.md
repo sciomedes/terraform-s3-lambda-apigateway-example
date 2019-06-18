@@ -13,6 +13,14 @@
 | module                                          | function                                  |
 |-------------------------------------------------|-------------------------------------------|
 | `terraform-aws-iam-lambda-role`                 | create Lambda role for S3 bucket access   |
+| `terraform-aws-lambda-function`                 | coming soon ...                           |
+
+## API endpoints for front end
+
+| module                                          | function                                  |
+|-------------------------------------------------|-------------------------------------------|
+| `terraform-aws-api-gateway`                     | coming soon ...                           |
+
 
 ## Usage
 Replace the variable values in the `locals` block with values that make sense to your own deployment.
