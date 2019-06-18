@@ -162,7 +162,7 @@ module "s3-storage-bucket" {
 #========================================================================
 module "cloudtrail-s3-bucket-logging" {
 
-  source = "./modules/terraform-aws-cloudtrail-s3-bucket-logging"
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-cloudtrail-s3-bucket-logging"
 
   #------------------------------------------------------------------------
   # the following settings are region-specific
