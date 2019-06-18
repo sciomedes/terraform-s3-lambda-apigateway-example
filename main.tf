@@ -1,9 +1,6 @@
 locals {
   region = "us-east-2"
 
-  // should non-empty buckets be removed upon 'terraform destroy'
-  force_destroy = true
-  
   # logging bucket variables
   logging_bucket_name = "sciomedes-logging-bucket-1ecf263bd0dd5836"
   logging_lifecycle_12 = 30   // 1 month
@@ -33,12 +30,26 @@ locals {
     Region         = "${local.region}"
   }
 
+  // should non-empty buckets be removed upon 'terraform destroy'
+  // this is useful during development and testing
+  logging_force_destroy = true
+  storage_force_destroy = true
+
   # iam role variables
   role_name = "lambda_role_name"
   iam_role_tags = {
     Subject        = "sciomedes"
     OrchestratedBy = "Terraform"
     Function       = "iam-role"
+    Region         = "${local.region}"
+  }
+
+  # cloudtrail specs
+  trail_name = "sciomedes-1ecf263bd0dd5836"
+  cloudtrail_tags = {
+    Subject        = "sciomedes"
+    OrchestratedBy = "Terraform"
+    Function       = "cloudtrail"
     Region         = "${local.region}"
   }
 
@@ -59,6 +70,7 @@ module "s3-logging-bucket" {
   #------------------------------------------------------------------------
   region              = "${local.region}"
   logging_bucket_name = "${local.logging_bucket_name}"
+  force_destroy       = "${local.logging_force_destroy}"
 
   #------------------------------------------------------------------------
   # tag resources:
@@ -80,6 +92,7 @@ module "s3-logging-bucket" {
   # expire after this many days:
   # this number MUST be greater than lifecycle_23
   lifecycle_3X = "${local.logging_lifecycle_3X}"
+
 
 }
 
@@ -124,7 +137,7 @@ module "s3-storage-bucket" {
   #------------------------------------------------------------------------
   region              = "${local.region}"
   bucket_name         = "${local.storage_bucket_name}"
-  force_destroy       = "${local.force_destroy}"
+  force_destroy       = "${local.storage_force_destroy}"
 
   #------------------------------------------------------------------------
   # tag resource:
@@ -141,5 +154,27 @@ module "s3-storage-bucket" {
   # number of days before transition from S3 Standard-IA to S3 Glacier
   # this number MUST be at least 30 more than lifecycle_12
   lifecycle_23 = "${local.storage_lifecycle_23}"
+
+}
+
+#========================================================================
+# s3 bucket for catching logs:
+#========================================================================
+module "cloudtrail-s3-bucket-logging" {
+
+  source = "github.com/sciomedes/terraform-s3-lambda-apigateway-example/modules/terraform-aws-cloudtrail-s3-bucket-logging"
+
+  #------------------------------------------------------------------------
+  # the following settings are region-specific
+  #------------------------------------------------------------------------
+  region              = "${local.region}"
+  trail_name          = "${local.trail_name}"
+  logging_bucket_name = "${local.logging_bucket_name}"
+  storage_bucket_arn  = "${module.s3-storage-bucket.storage_bucket_arn}"
+
+  #------------------------------------------------------------------------
+  # tag resource:
+  #------------------------------------------------------------------------
+  tags = "${local.cloudtrail_tags}"
 
 }

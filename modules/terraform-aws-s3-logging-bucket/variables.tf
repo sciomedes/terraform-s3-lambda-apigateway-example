@@ -31,3 +31,8 @@ variable "lifecycle_23" {
 variable "lifecycle_3X" {
   description = "Age of object in days at which it should expire"
 }
+
+variable "force_destroy" {
+  description = "Should non-empty bucket be removed upon performing 'terraform destroy'"
+  default     = false
+}

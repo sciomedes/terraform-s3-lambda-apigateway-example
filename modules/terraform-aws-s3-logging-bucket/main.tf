@@ -5,6 +5,13 @@ provider "aws" {
   region = "${var.region}"
 }
 
+#------------------------------------------------------------------------
+# local values:
+#------------------------------------------------------------------------
+locals {
+  // template file for bucket policy
+  policy_template = "${path.module}/policy-cloudtrail-s3-bucket-write.template"
+}
 
 #------------------------------------------------------------------------
 # aws_s3_bucket.logging_bucket
@@ -14,6 +21,7 @@ resource "aws_s3_bucket" "logging_bucket" {
   region = "${var.region}"
   bucket = "${var.logging_bucket_name}"
   acl    = "log-delivery-write"      # canned ACL
+  force_destroy = "${var.force_destroy}"
 
   # enable default AWS SSE:
   server_side_encryption_configuration {
@@ -56,6 +64,25 @@ resource "aws_s3_bucket" "logging_bucket" {
 
 } // aws_s3_bucket.logging_bucket
 
+#------------------------------------------------------------------------
+# data.template_file.policy
+#------------------------------------------------------------------------
+data "template_file" "policy" {
+  template = "${file("${local.policy_template}")}"
+
+  vars = {
+    logging_bucket_name = "${aws_s3_bucket.logging_bucket.id}"
+  }
+}
+
+#------------------------------------------------------------------------
+# aws_s3_bucket_policy.policy
+# attach pre-written policy to allow cloudtrail write permission
+#------------------------------------------------------------------------
+resource "aws_s3_bucket_policy" "policy" {
+  bucket = "${aws_s3_bucket.logging_bucket.id}"
+  policy = "${data.template_file.policy.rendered}"
+}
 
 #------------------------------------------------------------------------
 # aws_s3_bucket_public_access_block.policy-block-public-access
