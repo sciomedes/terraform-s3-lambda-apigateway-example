@@ -208,3 +208,15 @@ module "cloudtrail-s3-bucket-logging" {
 
 }
 ```
+
+## Authors
+
+Module managed by [sciomedes](https://github.com/sciomedes).
+
+## License
+
+MIT License. See [LICENSE](LICENSE) for full details.
+
+
+[sciomedes]: https://github.com/sciomedes
+[LICENSE]: https://github.com/sciomedes/terraform-s3-lambda-apigateway-example/LICENSE
